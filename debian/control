@@ -8,7 +8,7 @@ Homepage: http://www.atareao.es
 
 Package: nautilus-crusher
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends},
+Depends:
     python3,
     python3-gi,
     python3-cairo,
@@ -16,6 +16,7 @@ Depends: ${misc:Depends}, ${python:Depends},
     python3-plumbum,
     gir1.2-gtk-3.0,
     gir1.2-nautilus-3.0,
+    nanecalib,
     secure-delete
 Description: An extension to crush files
  An extension for Nautilus to crush files

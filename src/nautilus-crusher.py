@@ -60,7 +60,7 @@ _ = language.gettext
 
 class CrusherDIIB(DoItInBackground):
     def __init__(self, title, parent, files):
-        DoItInBackground.__init__(self, title, parent, files, ICON)
+        DoItInBackground.__init__(title, parent, files, ICON)
 
     def process_item(self, file_in):
         srm = local['srm']
@@ -82,12 +82,6 @@ class CrushFileMenuProvider(GObject.GObject, FileManager.MenuProvider):
     def process(self, menu, files, window):
         diib = CrusherDIIB(_('Crush file'), window, files)
         diib.run()
-
-    def all_are_files(self, items):
-        for item in items:
-            if item.is_directory():
-                return False
-        return True
 
     def get_file_items(self, window, sel_items):
         """

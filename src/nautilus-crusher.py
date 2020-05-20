@@ -40,7 +40,6 @@ import os
 import locale
 import gettext
 from plumbum import local
-from concurrent import futures
 try:
     sys.path.insert(1, '/usr/share/nanecalib')
     from nanecalib import DoItInBackground
@@ -58,13 +57,15 @@ language = gettext.translation(APP, LANGDIR, [current_locale])
 language.install()
 _ = language.gettext
 
+
 class CrusherDIIB(DoItInBackground):
     def __init__(self, title, parent, files):
-        DoItInBackground.__init__(title, parent, files, ICON)
+        DoItInBackground.__init__(self, title, parent, files, ICON)
 
     def process_item(self, file_in):
         srm = local['srm']
         srm['-lvr', "{}".format(file_in)]()
+
 
 class CrushFileMenuProvider(GObject.GObject, FileManager.MenuProvider):
     """
@@ -91,7 +92,7 @@ class CrushFileMenuProvider(GObject.GObject, FileManager.MenuProvider):
         """
         files = []
         for file_in in sel_items:
-            if not  file_in.is_directory():
+            if not file_in.is_directory():
                 files.append(file_in.get_location().get_path())
         if files:
             top_menuitem = FileManager.MenuItem(

@@ -13,9 +13,9 @@ Depends:
     python3-gi,
     python3-cairo,
     python3-nautilus,
-    python3-plumbum,
-    gir1.2-gtk-3.0,
     gir1.2-nautilus-3.0,
+    gir1.2-gtk-3.0,
+    python3-plumbum,
     nanecalib,
     secure-delete
 Description: An extension to crush files
